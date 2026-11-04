@@ -1,2 +1,2 @@
-# trawel-website
+# travel-website
 Team coursework
