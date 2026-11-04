@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+
+    <meta charset="utf-8">
+
+        <title>Travel cheaply across the world</title>
+
+      <!--adapting site for different screen shapes and dimentions-->
+    <meta name="viewport" 
+        content="width=device-width, initial-scale=1.0">
+      
+      
+    <meta name="theme-color" content="#C527F5" />
+
+      <!--icon-->
+        <link rel="icon"
+        href="..\images folder\logo.svg.png"
+        type="image/png">
+			
+      <!--Preloading request from fonts.google.com-->
+    
+        <link rel="preconnect" 
+        href="https://fonts.gstatic.com" 
+        crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap" 
+        rel="stylesheet">
+
+<!--connecting css-->
+        <link rel="stylesheet" href="../style.css/trial.css">
+        <script src="../javascript/gallery.js" defer></script>
+
+
+</head>
+
+   
+<body class="trip-com-layout-for-visitors">
+
+    <header class="site-header">
+        <a href="index.html" class="logo">Trip.com</a>
+
+        <nav class="navigation">
+            <a href="index.html">Home</a>
+            <a href="saved.html">Saved by you</a>
+            <a href="useful-websites.html">Useful websites</a>
+            <button class="search-button" aria-label="Search">
+                &#9906;
+            </button>
+        </nav>
+    </header>
+
+    
+    
+    <div class="page-search" id="page-search" hidden>
+
+        <label for="search-input">Find a section</label>
+
+        <input
+        type="search"
+        id="search-input"
+        placeholder="Try Spain, Japan, tips..."
+    >
+
+        <button type="button" id="find-section">
+        Search
+        </button>
+
+        <button type="button" id="close-search"
+        aria-label="Close search">
+        &#10005;
+        </button>
+
+            <p id="search-status" aria-live="polite"></p>
+
+    </div>
+
+
+
+<main>
+    <section class="hero" id="home">
+
+    <div class="hero-content">
+        <h1 class="front-page-text">
+        Best places to visit when
+        you are low on budget
+        </h1>
+
+    <div class="questionnaire">
+        <h2>
+        10 easy questions to find the
+        best destination for you
+        </h2>
+                    
+
+
+
+        <p>
+        while keeping it cheap and laid-back
+        </p>
+
+    <div class="questionnaire-details">
+            <span>Culture destinations</span>
+            <span>Beach destinations</span>
+            <span>12 min read</span>
+    </div>
+
+        <a href="questionnaire.html" class="start-button">
+        Start now
+        </a>
+    </div>
+
+    </div>
+
+    <div class="hero-image">
+        <img src="..\images folder\imageairplane.png.png"
+        alt="Aeroplane flying across the sky">
+    </div>
+
+    </section>
+
+
+
+<!-- experiences and images with div -->
+
+    <section class="travel-experiences" id="experiences">
+
+        <h2>Experiences shared by our users</h2>
+
+    <div class="experiences-grid">
+    
+
+        <article class="spain-card">
+
+
+    <div class="spain-gallery-wrapper">
+
+        <button class="gallery-arrow left-arrow"
+        type="button"
+        aria-label="Previous photograph">
+        &#10094;
+    </button>
+
+
+
+    <div class="spain-gallery">
+
+        <img id="spain-1" src="..\images folder\cala_cortina1.jpg" alt="First photograph of Spain">
+        <img id="spain-2" src="..\images folder\cala_cortina2.jpg" alt="Second photograph of Spain">
+        <img id="spain-3" src="..\images folder\cala_cortina3.jpg" alt="Third photograph of Spain">
+        <img id="spain-4" src="..\images folder\cala_cortina4.jpg" alt="Fourth photograph of Spain">
+
+    </div>
+
+
+
+    <button class="gallery-arrow right-arrow"
+    type="button"
+    aria-label="Next photograph">
+    &#10095;
+    </button>
+
+    </div>
+
+        <nav class="spain-dots" aria-label="Spain gallery navigation" >
+
+        <a href="#spain-1" aria-label="Photo 1"></a>
+        <a href="#spain-2" aria-label="Photo 2"></a>
+        <a href="#spain-3" aria-label="Photo 3"></a>
+        <a href="#spain-4" aria-label="Photo 4"></a>
+
+        </nav>
+
+
+        <h3>Gala Garina, Spain</h3>
+
+            <p>8 min read</p>
+            <p>Peter Pan</p>
+            <p>March 20, 2022</p>
+
+        </article>
+
+
+    <div class="small-experiences">
+
+        <article class="experience-card">
+
+        <img src="..\images folder\stockholm.jpg"
+        alt="Stockholm, Sweden">
+
+        <h3>Stockholm, Sweden</h3>
+
+            <p>Travel experiences</p>
+
+        </article>
+
+        <article class="experience-card">
+
+        <img src="..\images folder\oleshky.jpg"
+        alt="Oleshky Sands, Ukraine">
+
+        <h3>Oleshky Sands, Ukraine</h3>
+            <p>Travel experiences</p>
+
+        </article>
+
+        <article class="experience-card">
+
+        <img src="..\images folder\riga3.jpg"
+        alt="Riga, Latvia">
+
+        <h3>Riga, Latvia</h3>
+            <p>Travel experiences</p>
+
+        </article>
+
+    </div>
+
+    </div>
+
+
+
+    </section>
+
+
+
+    <section class="useful-websites" id="tips">
+
+        <h2>Useful websites for your next trip</h2>
+
+    <div class="websites-grid">
+
+
+
+        <a href="https://www.google.com/travel/flights"
+           target="_blank" rel="noopener noreferrer">
+
+
+        <img src="..\images folder\image.png"
+        alt=""
+        class="website-logo">
+
+        <span>GoogleFlights</span>
+        </a>
+
+
+
+        <a href="https://www.skyscanner.net/"
+           target="_blank" rel="noopener noreferrer">
+
+
+        <img src="..\images folder\1792064426592.png"
+        alt=""
+        class="website-logo">
+
+        <span>Skyscanner</span>
+        </a>
+
+
+        <a href="https://www.omio.com/"
+           target="_blank" rel="noopener noreferrer">
+
+
+
+        <img src="..\images folder\logo1.png"
+        alt=""
+        class="website-logo">
+
+        <span>Omio</span>
+        </a>
+
+
+
+        <a href="https://www.hostelworld.com/"
+           target="_blank" rel="noopener noreferrer">
+
+
+
+        <img src="..\images folder\logo2.png"
+        alt=""
+        class="website-logo">
+
+        <span>Hostelworld</span>
+        </a>
+
+
+
+        <a href="https://www.booking.com/"
+           target="_blank" rel="noopener noreferrer">
+
+
+
+        <img src="..\images folder\logo3.png"
+        alt=""
+        class="website-logo">
+
+        <span>Booking.com</span>
+        </a>
+
+
+
+        <a href="https://www.trustedhousesitters.com/"
+           target="_blank" rel="noopener noreferrer">
+
+
+
+        <img src="..\images folder\logo4.png"
+        alt=""
+        class="website-logo">
+
+    
+        <span>TrustedHouseSitters</span>
+        </a>
+
+
+
+        <a href="https://www.headout.com/"
+           target="_blank" rel="noopener noreferrer">
+
+
+
+        <img src="..\images folder\logo5.png"
+        alt=""
+        class="website-logo">
+
+        <span>Headout</span>
+        </a>
+
+
+
+        <a href="https://www.youtube.com/@OreliReshka"
+        target="_blank" rel="noopener noreferrer">
+
+
+
+        <img src="..\images folder\logo8.jpg"
+        alt=""
+        class="website-logo">
+
+        <span>Orel i reshka</span>
+        </a>
+
+    </div>
+
+    </section>
+
+
+
+    <section class="video-journey" id="video-journey"></section>>
+
+    <!-- Decorative travel routes -->
+        <svg class="travel-route route-left"
+         viewBox="0 0 100 600"
+         preserveAspectRatio="none"
+         aria-hidden="true">
+        <path d="M 70 0 C 0 130, 100 230, 35 350 S 100 520, 40 600"/>
+        </svg>
+
+
+        <svg class="travel-route route-right"
+         viewBox="0 0 100 600"
+         preserveAspectRatio="none"
+         aria-hidden="true">
+        <path d="M 30 0 C 100 140, 0 250, 65 370 S 0 520, 60 600"/>
+        </svg>
+
+    <div class="video-content">
+
+
+
+    <section class="travel-philosophy">
+
+    <div class="philosophy-text">
+
+        <h2>Travel isn't about how much you spend</h2>
+
+            <p>
+            It's about discovering new places,
+            experiencing different cultures,
+            and collecting memories along the way.
+            Your next adventure doesn't have to
+            cost a fortune.
+            </p>
+
+    </div>
+
+
+    <div class="video-container">
+
+        <iframe
+            src="https://www.youtube.com/embed/_AUc8k3pEao"
+            title="Travel inspiration video"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+    </section>
+
+    </div>
+
+    </section>
+
+
+
+
+
+    <section class="season-destinations" id="destinations">
+
+        <h2>Best places to visit this season</h2>
+
+    <div class="season-grid">
+
+        <article class="season-card">
+
+        <img src="..\images folder\newengland.png"
+        alt="Autumn foliage in New England">
+
+        <h3>New England (USA)</h3>
+
+            <p>
+            Famous for iconic leaf-peeping, scenic drives
+            along the Kancamagus Highway in New Hampshire,
+            and historic towns in Vermont and Maine peaking
+            around mid-to-late October.
+            </p>
+        </article>
+
+        <article class="season-card">
+            
+        <img src="..\images folder\scottishhighlands.png"
+        alt="Highland cow in Scotland">
+
+        <h3>Scottish Highlands (UK)</h3>
+
+            <p>
+            Offers fiery reds, oranges, and golds across
+            rolling hills, crisp hiking conditions, and
+            early morning mist without the summer crowds
+            or midges.
+            </p>
+        </article>
+
+        <article class="season-card">
+        <img src="..\images folder\tuscany.png"
+        alt="Sunset over the Tuscan countryside">
+
+        <h3>Tuscany (Italy)</h3>
+
+            <p>
+                Features golden vineyards, wine and food
+                harvest festivals, and comfortable temperatures
+                for exploring medieval hilltop towns.
+            </p>
+        </article>
+
+        <article class="season-card">
+        <img src="..\images folder\kyoto.png"
+        alt="Mount Fuji and autumn foliage in Japan">
+
+        <h3>Kyoto &amp; Kawaguchiko (Japan)</h3>
+
+            <p>
+            Known for vibrant maple trees (momiji),
+            views of Mount Fuji framed by colourful
+            foliage, and pleasant walking weather
+            from September through November.
+            </p>
+        </article>
+
+        <article class="season-card">
+        <img src="..\images folder\prague.png"
+        alt="Prague cityscape at dusk">
+
+        <h3>Prague (Czech Republic)</h3>
+
+            <p>
+            Brings golden colours to historic spires,
+            fewer tourists than summer, and scenic
+            walks across Charles Bridge or through
+            Letná Park.
+            </p>
+        </article>
+
+    </div>
+
+    </section>
+
+</main>
+  
+
+
+<footer class="site-footer">
+
+    <div class="footer-shortcuts">
+        <h2>Shortcuts</h2>
+
+        <nav class="footer-links" aria-label="Footer navigation">
+        <a href="#destinations">Lookout around the world</a>
+        <a href="#home">Home</a>
+        <a href="#experiences">Previous experiences</a>
+        <a href="#tips">Tips</a>
+        </nav>
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>
