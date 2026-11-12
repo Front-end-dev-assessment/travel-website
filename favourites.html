@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Favourites | Trip.com</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <a class="site-logo" href="results.html">Trip.com</a>
+
+        <nav aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="quiz.html">Travel quiz</a>
+            <a href="favourites.html" aria-current="page">
+                ♡ Favourites
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Favourites</h1>
+        <p id="favourites-status" aria-live="polite"></p>
+
+        <div class="favourites-grid">
+
+            <article class="favourite-card" data-destination="lisbon" hidden>
+                <img src="images/lisbon.jpg" alt="A tram on a street in Lisbon">
+
+                <h2>Lisbon, Portugal</h2>
+
+                <p class="favourite-price">
+                    ~£420/person
+                </p>
+                <button type="button" class="save-button remove-favourite">
+                    Remove ♡
+                </button>
+
+                <a class="view-details" href="lisbon.html">
+                    View details →
+                </a>
+            </article>
+            <article class="favourite-card" data-destination="amsterdam" hidden>
+                <img src="images/amsterdam.jpg" alt="Canal and buildings in Amsterdam">
+
+                <h2>Amsterdam, Netherlands</h2>
+
+                <p class="favourite-price">
+                    Estimated cost: —
+                </p>
+
+                <button type="button" class="save-button remove-favourite">
+                    Remove ♡
+                </button>
+                <a class="view-details" href="amsterdam.html">
+                    View details →
+                </a>
+            </article>
+            <article class="favourite-card" data-destination="menorca" hidden>
+                <img src="images/menorca.jpg" alt="Coastal buildings beside the sea in Menorca">
+
+                <h2>Menorca, Spain</h2>
+
+                <p class="favourite-price">Estimated cost: —</p>
+
+                <button type="button" class="save-button remove-favourite">
+                    Remove ♡
+                </button>
+                <a class="view-details" href="menorca.html">
+                    View details →
+                </a>
+            </article>
+
+
+            <article class="favourite-card" data-destination="copenhagen" hidden>
+                <img src="images/copenhagen.jpg" alt="Colourful waterfront buildings in Copenhagen">
+
+                <h2>Copenhagen, Denmark</h2>
+
+                <p class="favourite-price">Estimated cost: —</p>
+
+                <button type="button" class="save-button remove-favourite">
+                    Remove ♡
+                </button>
+                <a class="view-details" href="copenhagen.html">
+                    View details →
+                </a>
+            </article>
+
+
+            <article class="favourite-card" data-destination="paris" hidden>
+                <img src="images/paris.jpg" alt="The Eiffel Tower and the Paris skyline">
+
+                <h2>Paris, France</h2>
+
+                <p class="favourite-price">Estimated cost: —</p>
+
+                <button type="button" class="save-button remove-favourite">
+                    Remove ♡
+                </button>
+                <a class="view-details" href="paris.html">
+                    View details →
+                </a>
+
+            </article>
+
+
+            <article class="favourite-card" data-destination="barcelona" hidden>
+                <img src="images/barcelona.jpg" alt="The Sagrada Família and surrounding buildings in Barcelona">
+
+                <h2>Barcelona, Spain</h2>
+
+                <p class="favourite-price">Estimated cost: —</p>
+
+                <button type="button" class="save-button remove-favourite">
+                    Remove ♡
+                </button>
+                <a class="view-details" href="barcelona.html">
+                    View details →
+                </a>
+            </article>
+        </div>
+        <section class="random-picker">
+            <h2>Can’t decide?</h2>
+
+            <p>Let us choose from your saved destinations.</p>
+            <div class="wheel-container">
+                <div class="wheel-pointer" aria-hidden="true"></div>
+
+                <canvas id="destination-wheel" width="800" height="800" role="img"
+                    aria-label="Wheel of saved destinations">
+                    Use the button below to choose a saved destination.
+                </canvas>
+            </div>
+
+            <button type="button" class="spin-button" id="spin-button">
+                Spin the wheel!
+            </button>
+
+            <p id="random-result" aria-live="polite"></p>
+            <a id="random-details" class="view-details" hidden>
+                View details →
+            </a>
+        </section>
+    </main>
+    <script src="favourites.js">
+    </script>
+    <script src="travel-data.js"></script>
+    <script src="trip-prices.js"></script>
+</body>
+
+</html>
