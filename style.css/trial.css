@@ -151,11 +151,23 @@ body {
 }
 
 .questionnaire h2 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
     text-align: center;
     line-height: 1.2;
 }
+
+
+.questionnaire2 {
+    font-size: 18px;
+    font-family:"Lobster", cursive;
+    font-weight: 400;
+
+    text-align: left;
+    line-height: 1.2;
+
+}
+
 
 .questionnaire p {
     font-size: 10px;
@@ -166,11 +178,30 @@ body {
     border-top: 1px solid white;
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding-top: 8px;
-    font-size: 9px;
+    gap: 10px;
+    padding-top: 15px;
+    font-size: 10px;
+
+    width: 300px;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 12px;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
+/*width: 300px;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 12px;
+    background-color: white;
+    color: #252525;
+    border-radius: 12px;
+    overflow: hidden;*/
 .questionnaire-details span {
     flex: 1;
 }
