@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Paris | Trip.com</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body data-trip-destination="paris">
+    <header class="site-header">
+        <a class="site-logo" href="results.html">Trip.com</a>
+
+        <nav aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="quiz.html">Travel quiz</a>
+            <a href="favourites.html">♡ Favourites</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="back-links">
+            <a href="results.html">← Back to results</a>
+            <a href="favourites.html">♡ Favourites</a>
+        </div>
+
+        <section class="destination-hero">
+            <img src="images/paris.jpg" alt="The Eiffel Tower and the Paris skyline">
+
+            <h1>Paris, France</h1>
+        </section>
+
+        <p class="destination-summary">
+            Discover Paris through its iconic landmarks, art,
+            neighbourhood streets and welcoming cafés.
+            Enjoy riverside walks, browse local shops and
+            take time to experience the city at your own pace.
+        </p>
+
+        <section class="trip-overview">
+            <h2>TRIP OVERVIEW</h2>
+
+            <ul>
+                <li>
+                    <strong>Destination:</strong> Paris, France
+                </li>
+
+                <li>
+                    <strong>Duration:</strong>
+                    <span data-trip-duration>
+                        Complete the quiz to choose your trip length.
+                    </span>
+                </li>
+
+                <li>
+                    <strong>Estimated budget:</strong>
+                    <span data-trip-price>
+                        Complete the quiz to estimate your costs.
+                    </span>
+                </li>
+
+                <li>
+                    <strong>Interests:</strong>
+                    Art · Culture · Food
+                </li>
+
+                <li>
+                    <strong>Includes:</strong>
+                    Accommodation, food and public transport.
+                </li>
+
+                <li>
+                    <strong>Excludes:</strong>
+                    Flights, visa fees, travel insurance and paid attractions.
+                </li>
+            </ul>
+
+            <p class="budget-note">
+                Demo estimate based on your latest quiz answers,
+                not researched prices. Season and transport preferences
+                are not yet used in pricing.
+            </p>
+        </section>
+
+        <section class="itinerary">
+            <h2>THINGS TO SEE AND DO</h2>
+
+            <div class="itinerary-layout">
+                <div class="itinerary-days">
+                    <p>
+                        Explore Paris at your own pace, combining famous
+                        landmarks with quieter neighbourhood discoveries.
+                        Enjoy views of the Eiffel Tower, walk beside the
+                        Seine and spend time exploring art at the Louvre
+                        or Musée d’Orsay. Wander through Montmartre,
+                        browse bookshops and stop at a café for a pastry.
+                        Leave time for a garden stroll or a relaxed meal,
+                        choosing the places and activities that suit your
+                        interests and the length of your visit.
+                    </p>
+                </div>
+
+                <img class="itinerary-photo" src="images/paris.jpg" alt="The Eiffel Tower overlooking Paris">
+            </div>
+        </section>
+
+        <section class="travel-info" aria-label="Useful travel information">
+
+            <article class="travel-info-card">
+                <h2>Where to stay</h2>
+
+                <p>
+                    Compare hostels, budget hotels and apartments
+                    near public transport. Check the total price,
+                    cancellation terms and journey times to the
+                    places you want to visit before booking.
+                </p>
+            </article>
+
+            <article class="travel-info-card">
+                <h2>Entry requirements</h2>
+
+                <p>
+                    Before booking, check the official French entry
+                    guidance for your nationality, travel documents
+                    and residence status.
+                </p>
+
+                <p class="info-note">
+                    Official guidance link to be added after verification.
+                    Personal visa eligibility has not been checked.
+                </p>
+            </article>
+
+            <article class="travel-info-card">
+                <h2>Getting around</h2>
+
+                <p>
+                    Plan your airport transfer according to your
+                    arrival airport and accommodation. Combine
+                    walking with public transport, and check
+                    current routes and tickets before travelling.
+                </p>
+
+                <p class="info-note">
+                    Official transport links to be added after verification.
+                </p>
+            </article>
+
+        </section>
+    </main>
+    <script src="travel-data.js"></script>
+    <script src="trip-prices.js"></script>
+</body>
+
+</html>
