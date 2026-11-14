@@ -1,214 +1,188 @@
-const pages = [...document.querySelectorAll(".quiz-page")];
-const stepLabel = document.querySelector("#step-label");
-const progressFill = document.querySelector("#progress-fill");
+// Wait until the quiz page HTML is loaded.
+document.addEventListener("DOMContentLoaded", () => {
+  const STORAGE_KEY = "travel-quiz-answers";
+  const pages = [...document.querySelectorAll(".quiz-page")];
+  const stepLabel = document.querySelector("#step-label");
+  const progressFill = document.querySelector("#progress-fill");
+  const daysSlider = document.querySelector("#days");
+  const budgetSlider = document.querySelector("#budget");
+  const daysOutput = document.querySelector("#days-value");
+  const budgetOutput = document.querySelector("#budget-value");
+  const studentCheckbox = document.querySelector("#student-discount");
 
+  if (!pages.length || !daysSlider || !budgetSlider || !studentCheckbox) return;
 
-const answers = {
-  season: "",
-  origin: "",
-  otherCountry: "",
-  holiday: [],
-  stay: "",
-  transport: "",
-  passport: ""
-};
-
-let currentPage = 0;
-
-function showPage(pageNumber) {
-  currentPage = pageNumber;
-
-  pages.forEach((page, index) => {
-    page.hidden = index !== pageNumber;
-  });
-
-  stepLabel.textContent = `Step ${pageNumber + 1} of 3`;
-  progressFill.style.width = `${((pageNumber + 1) / 3) * 100}%`;
-
-  pages.forEach(page => {
-    const message = page.querySelector(".message");
-    if (message) message.textContent = "";
-  });
-
-
-  document.querySelector("#quiz").scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
-}
-
-document.querySelectorAll("[data-group]").forEach(button => {
-  button.setAttribute("aria-pressed", "false");
-
-  button.addEventListener("click", () => {
-    const group = button.dataset.group;
-    const value = button.dataset.value;
-    const multiSelect = group === "holiday";
-
-    if (multiSelect) {
-      button.classList.toggle("selected");
-      const selected = button.classList.contains("selected");
-      button.setAttribute("aria-pressed", String(selected));
-
-      if (selected && !answers.holiday.includes(value)) {
-        answers.holiday.push(value);
-      } else if (!selected) {
-        answers.holiday = answers.holiday.filter(item => item !== value);
-      }
-    } else {
-      button.closest(".quiz-page")
-        .querySelectorAll(`[data-group="${group}"]`)
-        .forEach(option => {
-          option.classList.remove("selected");
-          option.setAttribute("aria-pressed", "false");
-        });
-
-      button.classList.add("selected");
-      button.setAttribute("aria-pressed", "true");
-      answers[group] = value;
-    }
-
-    if (group === "origin") {
-      const countryField = document.querySelector("#other-country-wrap");
-      countryField.hidden = value !== "Other country";
-    }
-
-    const message = button.closest(".quiz-page").querySelector(".message");
-    if (message) message.textContent = "";
-  });
-});
-
-document.querySelector("#other-country").addEventListener("input", event => {
-  answers.otherCountry = event.target.value.trim();
-});
-
-function updateSlider(slider, output, formatValue) {
-  const min = Number(slider.min);
-  const max = Number(slider.max);
-  const value = Number(slider.value);
-  const percentage = ((value - min) / (max - min)) * 100;
-
-  slider.style.setProperty("--fill", `${percentage}%`);
-  output.textContent = formatValue(value);
-}
-
-const daysSlider = document.querySelector("#days");
-const budgetSlider = document.querySelector("#budget");
-
-function updateDays() {
-  updateSlider(
-    daysSlider,
-    document.querySelector("#days-value"),
-    value => `${value} ${value === 1 ? "day" : "days"}`
-  );
-}
-
-function updateBudget() {
-  updateSlider(
-    budgetSlider,
-    document.querySelector("#budget-value"),
-    value => `£${value.toLocaleString("en-GB")}`
-  );
-}
-
-daysSlider.addEventListener("input", updateDays);
-budgetSlider.addEventListener("input", updateBudget);
-updateDays();
-updateBudget();
-
-function showError(text) {
-  pages[currentPage].querySelector(".message").textContent = text;
-}
-
-document.querySelectorAll(".next-button").forEach(button => {
-  button.addEventListener("click", () => {
-    if (currentPage === 0) {
-      if (!answers.season) {
-        showError("Choose a season before continuing.");
-        return;
-      }
-
-      showPage(1);
-      return;
-    }
-
-    if (currentPage === 1) {
-      if (!answers.origin) {
-        showError("Choose where you will be travelling from.");
-        return;
-      }
-
-      if (answers.origin === "Other country" && !answers.otherCountry) {
-        showError("Enter the country you will be travelling from.");
-        document.querySelector("#other-country").focus();
-        return;
-      }
-
-      showPage(2);
-      return;
-    }
-
-    if (!answers.transport) {
-      showError("Choose how you would like to get around.");
-      return;
-    }
-
-    if (!answers.passport) {
-      showError("Choose your passport or immigration status.");
-      return;
-    }
-
-    showResults();
-  });
-});
-
-document.querySelectorAll(".previous-button").forEach(button => {
-  if (button.id === "edit-answers") return;
-
-  button.addEventListener("click", () => {
-    if (currentPage > 0) showPage(currentPage - 1);
-  });
-});
-
-
-function showResults() {
-  const savedAnswers = {
-    ...answers,
-    days: Number(daysSlider.value),
-    budget: Number(budgetSlider.value),
-    studentDiscount: document.querySelector("#student-discount").checked
+  const answers = {
+    season: "",
+    planning: "",
+    holiday: [],
+    stay: "",
+    transport: "",
+    passport: ""
   };
-  try {
-    localStorage.setItem("travel-quiz-answers", JSON.stringify(savedAnswers));
-  } catch {
-    showError("Your browser could not save your answers. Please allow site storage and try again.");
-    return;
-  }
-  window.location.href = "results.html";
-}
+  let currentPage = 0;
 
-// Restore previous answers when the visitor chooses Edit my answers.
-try {
-  const saved = JSON.parse(localStorage.getItem("travel-quiz-answers") || "null");
-  if (saved && typeof saved === "object") {
-    document.querySelectorAll("[data-group]").forEach(button => {
-      const group = button.dataset.group;
-      const value = button.dataset.value;
-      if (group === "holiday"
-        ? Array.isArray(saved.holiday) && saved.holiday.includes(value)
-        : saved[group] === value) {
-        button.click();
+  function showPage(pageNumber) {
+    currentPage = pageNumber;
+    pages.forEach((page, index) => { page.hidden = index !== pageNumber; });
+    if (stepLabel) stepLabel.textContent = `Step ${pageNumber + 1} of ${pages.length}`;
+    if (progressFill) progressFill.style.width = `${((pageNumber + 1) / pages.length) * 100}%`;
+    pages.forEach(page => {
+      const message = page.querySelector(".message");
+      if (message) message.textContent = "";
+    });
+    document.querySelector("#quiz")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  document.querySelectorAll("[data-group]").forEach(button => {
+    button.setAttribute("aria-pressed", "false");
+    button.addEventListener("click", () => {
+      const { group, value } = button.dataset;
+      if (!group || !value) return;
+
+      if (group === "holiday") {
+        const selected = button.classList.toggle("selected");
+        button.setAttribute("aria-pressed", String(selected));
+        answers.holiday = selected
+          ? [...new Set([...answers.holiday, value])]
+          : answers.holiday.filter(item => item !== value);
+      } else {
+        button.closest(".quiz-page")
+          ?.querySelectorAll(`[data-group="${group}"]`)
+          .forEach(option => {
+            option.classList.remove("selected");
+            option.setAttribute("aria-pressed", "false");
+          });
+        button.classList.add("selected");
+        button.setAttribute("aria-pressed", "true");
+        if (Object.hasOwn(answers, group)) answers[group] = value;
+      }
+
+      const message = button.closest(".quiz-page")?.querySelector(".message");
+      if (message) message.textContent = "";
+    });
+  });
+
+  function updateSlider(slider, output, formatter) {
+    const min = Number(slider.min);
+    const max = Number(slider.max);
+    const value = Number(slider.value);
+    const percentage = max > min ? ((value - min) / (max - min)) * 100 : 0;
+    slider.style.setProperty("--fill", `${percentage}%`);
+    if (output) output.textContent = formatter(value);
+  }
+  const updateDays = () => updateSlider(daysSlider, daysOutput, value => `${value} ${value === 1 ? "day" : "days"}`);
+  const updateBudget = () => updateSlider(budgetSlider, budgetOutput, value => `£${value.toLocaleString("en-GB")}`);
+  daysSlider.addEventListener("input", updateDays);
+  budgetSlider.addEventListener("input", updateBudget);
+
+  function showError(message) {
+    const element = pages[currentPage]?.querySelector(".message");
+    if (element) element.textContent = message;
+  }
+
+  function validatePage() {
+    if (currentPage === 0 && !answers.season) {
+      showError("Please choose a season before continuing.");
+      return false;
+    }
+    if (currentPage === 1) {
+      if (!answers.planning) {
+        showError("Please choose your preferred planning style.");
+        return false;
+      }
+      if (!answers.holiday.length) {
+        showError("Please choose at least one holiday type.");
+        return false;
+      }
+      if (!answers.stay) {
+        showError("Please choose your preferred accommodation.");
+        return false;
+      }
+    }
+    if (currentPage === 2) {
+      if (!answers.transport) {
+        showError("Please choose your preferred transport.");
+        return false;
+      }
+      if (!answers.passport) {
+        showError("Please choose your passport or immigration status.");
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function showResults() {
+    const savedAnswers = {
+      ...answers,
+      days: Number(daysSlider.value),
+      budget: Number(budgetSlider.value),
+      studentDiscount: studentCheckbox.checked
+    };
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(savedAnswers));
+      window.location.href = "results.html";
+    } catch {
+      showError("Unable to save your answers. Please check browser storage.");
+    }
+  }
+
+  document.querySelectorAll(".next-button").forEach(button => {
+    button.addEventListener("click", () => {
+      if (!validatePage()) return;
+      if (currentPage < pages.length - 1) showPage(currentPage + 1);
+      else showResults();
+    });
+  });
+  document.querySelectorAll(".previous-button").forEach(button => {
+    button.addEventListener("click", () => {
+      if (currentPage > 0) showPage(currentPage - 1);
+    });
+  });
+
+  function restoreAnswers() {
+    let saved;
+    try {
+      saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+    } catch {
+      return;
+    }
+    if (!saved || typeof saved !== "object") return;
+
+    ["season", "planning", "stay", "transport", "passport"].forEach(group => {
+      if (typeof saved[group] !== "string") return;
+      const button = [...document.querySelectorAll(`[data-group="${group}"]`)]
+        .find(option => option.dataset.value === saved[group]);
+      if (button) {
+        button.classList.add("selected");
+        button.setAttribute("aria-pressed", "true");
+        answers[group] = saved[group];
       }
     });
-    answers.otherCountry = typeof saved.otherCountry === "string" ? saved.otherCountry : "";
-    document.querySelector("#other-country").value = answers.otherCountry;
-    if (Number.isInteger(saved.days) && saved.days >= 1 && saved.days <= 14) daysSlider.value = saved.days;
-    if (Number.isFinite(saved.budget) && saved.budget >= 100 && saved.budget <= 2000) budgetSlider.value = saved.budget;
-    document.querySelector("#student-discount").checked = saved.studentDiscount === true;
+
+    if (Array.isArray(saved.holiday)) {
+      saved.holiday.forEach(value => {
+        const button = [...document.querySelectorAll('[data-group="holiday"]')]
+          .find(option => option.dataset.value === value);
+        if (button && !answers.holiday.includes(value)) {
+          button.classList.add("selected");
+          button.setAttribute("aria-pressed", "true");
+          answers.holiday.push(value);
+        }
+      });
+    }
+    if (Number.isInteger(saved.days) && saved.days >= Number(daysSlider.min) && saved.days <= Number(daysSlider.max)) {
+      daysSlider.value = saved.days;
+    }
+    if (Number.isFinite(saved.budget) && saved.budget >= Number(budgetSlider.min) && saved.budget <= Number(budgetSlider.max)) {
+      budgetSlider.value = saved.budget;
+    }
+    studentCheckbox.checked = saved.studentDiscount === true;
   }
-} catch {
-  // A fresh quiz remains usable if stored answers cannot be read.
-}
-updateDays();
-updateBudget();
-showPage(0);
+
+  restoreAnswers();
+  updateDays();
+  updateBudget();
+  showPage(0);
+});

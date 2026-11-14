@@ -1,544 +1,946 @@
+// GOOGLE FONT
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
-
+/* =========================
+GLOBAL SETTINGS
+========================= */
 :root {
-  --green: #17652f;
-  --dark-green: #0d5727;
-  --ink: #20221d;
-  --paper: #fbf9ee;
-  --muted: #74766d;
+--green: #17652f;
+--dark-green: #0d5727;
+--ink: #20221d;
+--paper: #fbf9ee;
+--muted: #74766d;
+--light-green: #e4ead9;
+--border: #bdcbaa;
+--white: #ffffff;
+--page-background: #f4f2e8;
 }
-
-* {
-  box-sizing: border-box;
+{
+box-sizing: border-box;
 }
-
+html {
+scroll-behavior: smooth;
+scroll-padding-top: 20px;
+}
 body {
-  margin: 0;
-  background: #f4f2e8;
-  color: var(--ink);
-  font-family: "DM Sans", Arial, sans-serif;
+margin: 0;
+background: var(--page-background);
+color: var(--ink);
+font-family: "DM Sans", Arial, sans-serif;
+line-height: 1.6;
+min-height: 100vh;
 }
-
 button,
-input {
-  font: inherit;
+input,
+a {
+font: inherit;
 }
-
+button {
+-webkit-tap-highlight-color: transparent;
+}
+img {
+display: block;
+max-width: 100%;
+}
+a {
+color: inherit;
+}
+[hidden] {
+display: none !important;
+}
+/* =========================
+2. HEADER AND NAVIGATION
+========================= */
 .site-header {
-  width: min(100%, 1000px);
-  height: 68px;
-  margin: auto;
-  padding: 0 32px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: white;
+width: min(100%, 1200px);
+min-height: 68px;
+margin: auto;
+padding: 12px clamp(16px, 4vw, 40px);
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 20px;
+background: var(--white);
 }
-
-.logo {
-  color: #45583b;
-  font-size: 27px;
-  font-weight: 800;
-  text-decoration: none;
+.logo,
+.site-logo {
+color: #45583b;
+font-size: clamp(21px, 2.5vw, 27px);
+font-weight: 800;
+text-decoration: none;
+white-space: nowrap;
 }
-
 .logo span {
-  color: #a0a524;
+color: #a0a524;
 }
-
-nav {
-  display: flex;
-  gap: 28px;
+.site-header nav {
+display: flex;
+align-items: center;
+justify-content: flex-end;
+flex-wrap: wrap;
+gap: clamp(12px, 2.5vw, 28px);
 }
-
-nav a {
-  color: #59620d;
-  font-size: 14px;
-  text-decoration: none;
+.site-header nav a {
+color: #59620d;
+font-size: 14px;
+font-weight: 600;
+text-decoration: none;
+transition: color 0.2s;
 }
-
+.site-header nav a:hover,
+.site-header nav a[aria-current="page"] {
+color: var(--green);
+}
+/* =========================
+3. MAIN PAGE CONTAINER
+========================= */
 main {
-  width: min(100%, 1000px);
-  margin: auto;
-  padding: 28px 9% 34px;
-  background: var(--paper);
+width: min(100%, 1200px);
+margin: auto;
+padding: clamp(20px, 4vw, 44px) clamp(16px, 7vw, 90px);
+background: var(--paper);
 }
-
 .intro {
-  margin-bottom: 28px;
-  padding: 18px;
-  border: 1px solid #9aa58b;
-  border-radius: 24px;
-  background: #e4ead9;
-  text-align: center;
+margin-bottom: 28px;
+padding: clamp(18px, 3vw, 28px);
+border: 1px solid #9aa58b;
+border-radius: 24px;
+background: var(--light-green);
+text-align: center;
 }
-
 .intro h1 {
-  margin: 0 0 5px;
-  font-size: 32px;
+margin: 0 0 8px;
+font-size: clamp(24px, 4vw, 36px);
+line-height: 1.25;
 }
-
 .intro p {
-  margin: 0;
-  color: #315c38;
-  font-size: 15px;
+margin: 0;
+color: #315c38;
+font-size: clamp(13px, 1.5vw, 16px);
 }
-
+/* =========================
+4. QUIZ PROGRESS BAR
+========================= */
 .progress {
-  margin: 0 2% 28px;
-  color: var(--green);
-  font-size: 14px;
+margin: 0 2% 28px;
+color: var(--green);
+font-size: 14px;
 }
-
 .progress-line {
-  height: 4px;
-  margin-top: 8px;
-  background: #b8c8b3;
+height: 5px;
+margin-top: 9px;
+overflow: hidden;
+border-radius: 10px;
+background: #b8c8b3;
 }
-
 .progress-line span {
-  display: block;
-  width: 33.33%;
-  height: 100%;
-  background: var(--green);
-  transition: width 0.2s;
+display: block;
+width: 33.33%;
+height: 100%;
+border-radius: 10px;
+background: var(--green);
+transition: width 0.3s ease;
 }
-
-.quiz-page[hidden],
-.results[hidden],
-.other-country[hidden],
-.student-tip[hidden] {
-  display: none;
-}
-
+/* =========================
+5. QUIZ HEADINGS
+========================= */
 .quiz-page h2,
 .results h2 {
-  margin: 0;
-  font-size: 20px;
-  text-align: center;
+margin: 0;
+font-size: clamp(17px, 2.2vw, 21px);
+text-align: center;
+line-height: 1.4;
 }
-
 .hint {
-  margin: 5px 0 14px;
-  color: var(--muted);
-  font-size: 13px;
-  text-align: center;
+margin: 6px 0 16px;
+color: var(--muted);
+font-size: 13px;
+text-align: center;
 }
-
-.choice-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.choice-card {
-  padding: 0 0 10px;
-  overflow: hidden;
-  border: 2px solid transparent;
-  border-radius: 9px;
-  background: white;
-  color: var(--ink);
-  font-size: 13px;
-  cursor: pointer;
-  transition: border-color 0.15s, background 0.15s, transform 0.15s;
-}
-
-.choice-card:hover {
-  transform: translateY(-2px);
-}
-
-.choice-card.selected,
-.pill.selected {
-  border-color: var(--green);
-  background-color: #eaf1e4;
-  box-shadow: 0 0 0 3px #17652f22;
-}
-
-.photo {
-  display: grid;
-  height: 100px;
-  margin-bottom: 8px;
-  place-items: center;
-  background-position: center;
-  background-size: cover;
-  font-size: 25px;
-}
-
-.summer {
-  background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80");
-}
-
-.autumn {
-  background-image: url("https://images.unsplash.com/photo-1507371341162-763b5e419408?auto=format&fit=crop&w=500&q=80");
-}
-
-.winter {
-  background-image: url("https://images.unsplash.com/photo-1517299321609-52687d1bc55a?auto=format&fit=crop&w=500&q=80");
-}
-
-.spring {
-  background-image: url("https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=500&q=80");
-}
-
-.europe {
-  background-image: url("https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=500&q=80");
-}
-
-.uk {
-  background-image: url("https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=500&q=80");
-}
-
-.asia {
-  background-image: url("https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=500&q=80");
-}
-
-.usa {
-  background-image: url("https://images.unsplash.com/photo-1485738422979-f5c462d49f74?auto=format&fit=crop&w=500&q=80");
-}
-
-.other {
-  background: linear-gradient(135deg, #dfe8d5, #b7caa9);
-}
-
-.beach {
-  background-image: url("https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?auto=format&fit=crop&w=500&q=80");
-}
-
-.culture {
-  background-image: url("https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=500&q=80");
-}
-
-.nature {
-  background-image: url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=500&q=80");
-}
-
-.nightlife {
-  background-image: url("https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=500&q=80");
-}
-
-.slider-question {
-  max-width: 800px;
-  margin: 27px auto 0;
-}
-
-.slider-title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.slider-title h2 {
-  font-size: 18px;
-}
-
-.slider-title output {
-  min-width: 60px;
-  font-size: 19px;
-  font-weight: 800;
-  text-align: center;
-}
-
-.slider-labels {
-  display: flex;
-  justify-content: space-between;
-  margin: 12px 2px 4px;
-  font-size: 13px;
-}
-
-input[type="range"] {
-  --fill: 50%;
-  display: block;
-  width: 100%;
-  height: 22px;
-  margin: 0;
-  appearance: none;
-  background: transparent;
-  cursor: pointer;
-}
-
-input[type="range"]::-webkit-slider-runnable-track {
-  height: 4px;
-  border-radius: 5px;
-  background: linear-gradient(
-    to right,
-    #292a26 0%,
-    #292a26 var(--fill),
-    #c8c8bf var(--fill),
-    #c8c8bf 100%
-  );
-}
-
-input[type="range"]::-moz-range-track {
-  height: 4px;
-  border-radius: 5px;
-  background: #c8c8bf;
-}
-
-input[type="range"]::-moz-range-progress {
-  height: 4px;
-  border-radius: 5px;
-  background: #292a26;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  width: 16px;
-  height: 16px;
-  margin-top: -6px;
-  appearance: none;
-  border: 0;
-  border-radius: 50%;
-  background: #20221d;
-}
-
-input[type="range"]::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
-  border: 0;
-  border-radius: 50%;
-  background: #20221d;
-}
-
 .sub-question {
-  margin-top: 22px !important;
+margin-top: 30px !important;
 }
-
-.other-country {
-  display: block;
-  max-width: 400px;
-  margin: 12px auto 0;
-  font-size: 13px;
-}
-
-.other-country input {
-  width: 100%;
-  margin-top: 5px;
-  padding: 10px 12px;
-  border: 1px solid #b8b8aa;
-  border-radius: 8px;
-  background: white;
-}
-
-.passport-box {
-  margin-top: 24px;
-  padding: 18px;
-  border: 2px solid #bdcbaa;
-  border-radius: 26px;
-  background: #f0f4e9;
-}
-
-.passport-options {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
-.pill {
-  padding: 10px 15px;
-  border: 1px solid #929788;
-  border-radius: 18px;
-  background: white;
-  cursor: pointer;
-}
-
-.student-option {
-  display: block;
-  width: max-content;
-  max-width: 100%;
-  margin: 16px auto 0;
-  font-size: 14px;
-}
-
-.message {
-  min-height: 20px;
-  margin: 12px 0 0;
-  color: #a34535;
-  font-size: 13px;
-  text-align: center;
-}
-
-.page-buttons {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.next-button,
-.previous-button {
-  padding: 11px 24px;
-  border-radius: 18px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.next-button {
-  border: 0;
-  background: var(--green);
-  color: white;
-}
-
-.next-button:hover {
-  background: var(--dark-green);
-}
-
-.previous-button {
-  border: 1px solid #c7c7bb;
-  background: transparent;
-  color: var(--ink);
-}
-
-.results {
-  margin-top: 28px;
-  padding: 24px;
-  border-top: 1px solid #ddd9c8;
-}
-
-.summary {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin: 18px 0;
-}
-
-.summary div {
-  padding: 12px;
-  border-radius: 12px;
-  background: white;
-  text-align: center;
-}
-
-.summary strong,
-.summary span {
-  display: block;
-}
-
-.summary span {
-  margin-top: 4px;
-  color: var(--muted);
-}
-
-.destination-list {
-  display: grid;
-  gap: 10px;
-}
-
-.destination {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 14px;
-  align-items: center;
-  padding: 10px;
-  border-radius: 12px;
-  background: white;
-}
-
-.destination img {
-  width: 120px;
-  height: 85px;
-  border-radius: 8px;
-  object-fit: cover;
-}
-
-.destination h3,
-.destination p {
-  margin: 0 0 5px;
-}
-
-.destination p {
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.student-tip {
-  padding: 12px;
-  border-radius: 10px;
-  background: #e4ead9;
-  text-align: center;
-}
-
-@media (max-width: 650px) {
-  .site-header {
-    height: 58px;
-    padding: 0 16px;
-  }
-
-  .logo {
-    font-size: 21px;
-  }
-
-  nav {
-    gap: 10px;
-  }
-
-  nav a {
-    font-size: 10px;
-  }
-
-  main {
-    padding: 20px 5% 28px;
-  }
-
-  .intro h1 {
-    font-size: 24px;
-  }
-
-  .intro p {
-    font-size: 12px;
-  }
-
-  .choice-grid {
-    gap: 8px;
-  }
-
-  .photo {
-    height: 75px;
-  }
-
-  .choice-card {
-    font-size: 10px;
-  }
-
-  .quiz-page h2 {
-    font-size: 17px;
-  }
-
-  .summary {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .destination {
-    grid-template-columns: 85px 1fr;
-  }
-
-  .destination img {
-    width: 85px;
-    height: 75px;
-  }
-}
-
-@media (max-width: 390px) {
-  .choice-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+/* =========================
+6. CHOICE GRID
+========================= */
+.choice-grid {
+display: grid;
+grid-template-columns: repeat(4, minmax(0, 1fr));
+gap: clamp(8px, 1.5vw, 16px);
 }
 .choice-grid.seasons {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+grid-template-columns: repeat(5, minmax(0, 1fr));
 }
-
+.choice-card {
+min-width: 0;
+padding: 0 0 12px;
+overflow: hidden;
+border: 2px solid transparent;
+border-radius: 10px;
+background: var(--white);
+color: var(--ink);
+font-size: clamp(11px, 1.2vw, 14px);
+font-weight: 600;
+line-height: 1.4;
+cursor: pointer;
+transition:
+border-color 0.2s,
+background 0.2s,
+transform 0.2s,
+box-shadow 0.2s;
+}
+.choice-card:hover {
+transform: translateY(-3px);
+box-shadow: 0 5px 14px #00000012;
+}
+.choice-card:focus-visible,
+.pill:focus-visible,
+button:focus-visible,
+a:focus-visible {
+outline: 3px solid #86ad75;
+outline-offset: 3px;
+}
+.choice-card.selected,
+.pill.selected {
+border-color: var(--green);
+background: #eaf1e4;
+box-shadow: 0 0 0 3px #17652f22;
+}
+/* =========================
+7. CHOICE PHOTOS
+========================= */
+.photo {
+display: grid;
+width: 100%;
+height: clamp(75px, 11vw, 120px);
+margin-bottom: 9px;
+place-items: center;
+background-position: center;
+background-size: cover;
+font-size: 28px;
+}
+.summer {
+background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80");
+}
+.autumn {
+background-image: url("https://images.unsplash.com/photo-1507371341162-763b5e419408?auto=format&fit=crop&w=500&q=80");
+}
+.winter {
+background-image: url("https://images.unsplash.com/photo-1517299321609-52687d1bc55a?auto=format&fit=crop&w=500&q=80");
+}
+.spring {
+background-image: url("https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=500&q=80");
+}
+.beach {
+background-image: url("https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?auto=format&fit=crop&w=500&q=80");
+}
+.culture {
+background-image: url("https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=500&q=80");
+}
+.nature {
+background-image: url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=500&q=80");
+}
+.nightlife {
+background-image: url("https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=500&q=80");
+}
+.no-preference,
+.planning-ahead,
+.planning-some,
+.planning-flexible,
+.planning-none,
+.hotel,
+.budget-hotel,
+.apartment,
+.affordable,
+.walking,
+.driving,
+.public,
+.mixed {
+background: linear-gradient(135deg, #e4ead9, #b7caa9);
+}
+.planning-ahead,
+.planning-some,
+.planning-flexible,
+.planning-none,
+.hotel,
+.budget-hotel,
+.apartment,
+.affordable,
+.walking,
+.driving,
+.public,
+.mixed,
 .no-preference {
-  background: linear-gradient(135deg, #e4ead9, #c5d4b8);
+font-size: clamp(26px, 4vw, 36px);
 }
-
+/* =========================
+8. SLIDERS
+========================= */
+.slider-question {
+width: 100%;
+max-width: 800px;
+margin: 30px auto 0;
+}
+.slider-title {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 12px;
+}
+.slider-title h2 {
+font-size: clamp(15px, 2vw, 19px);
+text-align: left;
+}
+.slider-title output {
+min-width: 65px;
+color: var(--green);
+font-size: clamp(17px, 2.2vw, 21px);
+font-weight: 800;
+text-align: right;
+}
+.slider-labels {
+display: flex;
+justify-content: space-between;
+gap: 10px;
+margin: 12px 2px 4px;
+color: var(--muted);
+font-size: 13px;
+}
+input[type="range"] {
+--fill: 50%;
+display: block;
+width: 100%;
+height: 28px;
+margin: 0;
+appearance: none;
+background: transparent;
+cursor: pointer;
+touch-action: pan-y;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+height: 5px;
+border-radius: 5px;
+background: linear-gradient(
+to right,
+#292a26 0%,
+#292a26 var(--fill),
+#c8c8bf var(--fill),
+#c8c8bf 100%
+);
+}
+input[type="range"]::-moz-range-track {
+height: 5px;
+border-radius: 5px;
+background: #c8c8bf;
+}
+input[type="range"]::-moz-range-progress {
+height: 5px;
+background: #292a26;
+}
+input[type="range"]::-webkit-slider-thumb {
+width: 18px;
+height: 18px;
+margin-top: -7px;
+appearance: none;
+border: 0;
+border-radius: 50%;
+background: var(--ink);
+}
+input[type="range"]::-moz-range-thumb {
+width: 18px;
+height: 18px;
+border: 0;
+border-radius: 50%;
+background: var(--ink);
+}
+/* =========================
+9. PASSPORT SECTION
+========================= */
+.passport-box {
+margin-top: 28px;
+padding: clamp(15px, 3vw, 24px);
+border: 2px solid var(--border);
+border-radius: 24px;
+background: #f0f4e9;
+}
+.passport-box h2 {
+max-width: 700px;
+margin: 0 auto;
+}
+.passport-options {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 10px;
+}
+.pill {
+padding: 10px 15px;
+border: 1px solid #929788;
+border-radius: 20px;
+background: white;
+color: var(--ink);
+font-size: 13px;
+cursor: pointer;
+transition: 0.2s;
+}
+.pill:hover {
+border-color: var(--green);
+}
+.student-option {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 9px;
+width: fit-content;
+max-width: 100%;
+margin: 18px auto 0;
+font-size: 14px;
+cursor: pointer;
+}
+.student-option input {
+width: 18px;
+height: 18px;
+accent-color: var(--green);
+}
+/* =========================
+10. VALIDATION MESSAGES
+========================= */
+.message {
+min-height: 22px;
+margin: 12px 0 0;
+color: #a34535;
+font-size: 13px;
+text-align: center;
+}
+/* =========================
+11. PAGE NAVIGATION BUTTONS
+========================= */
+.page-buttons {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 12px;
+margin-top: 24px;
+}
+.next-button,
+.previous-button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+min-height: 44px;
+padding: 11px 24px;
+border-radius: 22px;
+font-size: 14px;
+font-weight: 600;
+text-decoration: none;
+cursor: pointer;
+transition: 0.2s;
+}
+.next-button {
+border: 0;
+background: var(--green);
+color: white;
+}
+.next-button:hover {
+background: var(--dark-green);
+}
+.previous-button {
+border: 1px solid #c7c7bb;
+background: transparent;
+color: var(--ink);
+}
+.previous-button:hover {
+background: #e9e9df;
+}
+.edit-answers {
+display: inline-block;
+margin: 10px 0 20px;
+color: var(--green);
+font-size: 14px;
+font-weight: 700;
+text-decoration: none;
+}
+.edit-answers:hover,
+.view-details:hover {
+text-decoration: underline;
+}
+/* =========================
+12. RESULTS PAGE
+========================= */
+.results-page {
+min-height: 60vh;
+}
+.results-hero {
+margin-bottom: 28px;
+text-align: center;
+}
+.results-hero h1 {
+margin: 20px 0 5px;
+font-size: clamp(27px, 4vw, 38px);
+line-height: 1.2;
+}
+.results-hero p {
+margin: 0;
+color: var(--muted);
+}
+.hero-map {
+width: 100%;
+max-height: 270px;
+aspect-ratio: 16 / 6;
+border-radius: 18px;
+object-fit: cover;
+}
+/* =========================
+13. USER PREFERENCES
+========================= */
+.trip-preferences {
+margin: 25px 0;
+padding: clamp(16px, 3vw, 24px);
+border: 1px solid var(--border);
+border-radius: 18px;
+background: #f0f4e9;
+}
+.trip-preferences h2 {
+margin: 0 0 18px;
+font-size: 21px;
+text-align: center;
+}
+.preference-grid {
+display: grid;
+grid-template-columns: repeat(4, minmax(0, 1fr));
+gap: 12px;
+}
+.preference-item {
+min-width: 0;
+padding: 13px;
+border-radius: 12px;
+background: white;
+overflow-wrap: anywhere;
+}
+.preference-item strong,
+.preference-item span {
+display: block;
+}
+.preference-item strong {
+margin-bottom: 5px;
+color: var(--green);
+font-size: 12px;
+}
+.preference-item span {
+font-size: 13px;
+}
+/* =========================
+14. DESTINATION CARDS
+========================= */
+.destination-results {
+margin-top: 35px;
+}
+.destination-results > h2 {
+margin: 0 0 5px;
+font-size: 25px;
+text-align: center;
+}
+.section-description {
+margin: 0 0 22px;
+color: var(--muted);
+font-size: 14px;
+text-align: center;
+}
+.destination-card {
+display: grid;
+grid-template-columns: minmax(180px, 35%) minmax(0, 1fr);
+gap: 20px;
+align-items: center;
+margin-bottom: 18px;
+padding: 14px;
+border: 1px solid #e5e2d5;
+border-radius: 16px;
+background: white;
+transition:
+transform 0.2s,
+box-shadow 0.2s;
+}
+.destination-card:hover {
+transform: translateY(-2px);
+box-shadow: 0 5px 18px #0000000c;
+}
+.destination-image {
+width: 100%;
+height: 190px;
+border-radius: 12px;
+object-fit: cover;
+}
+.destination-info {
+min-width: 0;
+}
+.destination-info h2 {
+margin: 0 0 8px;
+font-size: clamp(18px, 2.2vw, 23px);
+text-align: left;
+}
+.destination-info p {
+margin: 7px 0;
+font-size: 14px;
+}
+.destination-interests {
+color: var(--muted);
+}
+.destination-price {
+color: var(--green);
+font-weight: 800;
+}
+.save-button {
+min-height: 38px;
+margin: 8px 8px 0 0;
+padding: 8px 16px;
+border: 1px solid var(--green);
+border-radius: 20px;
+background: white;
+color: var(--green);
+font-size: 13px;
+font-weight: 700;
+cursor: pointer;
+transition: 0.2s;
+}
+.save-button:hover,
+.save-button.saved {
+background: var(--green);
+color: white;
+}
+.view-details {
+display: inline-block;
+margin-top: 10px;
+color: var(--green);
+font-size: 14px;
+font-weight: 700;
+text-decoration: none;
+}
+/* =========================
+15. PLANNING GUIDE
+========================= */
+.planning-guide {
+margin-top: 35px;
+padding: clamp(17px, 3vw, 26px);
+border: 1px solid var(--border);
+border-radius: 18px;
+background: #f0f4e9;
+}
+.planning-guide h2 {
+margin: 0 0 10px;
+font-size: 23px;
+}
+.planning-guide h3 {
+margin: 26px 0 12px;
+font-size: 17px;
+}
+.planning-guide p {
+font-size: 14px;
+}
+.planning-guide ol {
+padding-left: 23px;
+}
+.planning-guide li {
+margin-bottom: 9px;
+font-size: 14px;
+}
+.planning-tools {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 12px;
+}
+.planning-tool {
+display: flex;
+flex-direction: column;
+gap: 7px;
+min-width: 0;
+padding: 15px;
+border: 1px solid #d4ddca;
+border-radius: 12px;
+background: white;
+text-decoration: none;
+transition: 0.2s;
+}
+.planning-tool:hover {
+border-color: var(--green);
+transform: translateY(-2px);
+}
+.planning-tool strong {
+color: var(--green);
+font-size: 14px;
+}
+.planning-tool span {
+color: var(--muted);
+font-size: 12px;
+}
+.planning-note {
+color: var(--muted);
+font-size: 12px !important;
+}
+.student-tip {
+margin: 20px 0;
+padding: 14px;
+border-radius: 12px;
+background: #e4ead9;
+color: var(--green);
+text-align: center;
+}
+/* =========================
+16. FAVOURITES PAGE
+========================= */
+.favourites-page h1 {
+font-size: clamp(25px, 4vw, 34px);
+text-align: center;
+}
+.favourites-empty {
+padding: 40px 15px;
+color: var(--muted);
+text-align: center;
+}
+.favourites-empty a {
+color: var(--green);
+font-weight: 700;
+}
+/* =========================
+17. RESULTS ACTIONS
+========================= */
+.results-actions {
+display: flex;
+flex-wrap: wrap;
+gap: 12px;
+margin: 18px 0;
+}
+/* =========================
+18. FOOTER
+========================= */
+.site-footer {
+width: min(100%, 1200px);
+margin: auto;
+padding: 28px clamp(16px, 5vw, 45px);
+background: #e4ead9;
+color: #45583b;
+text-align: center;
+}
+.site-footer h2 {
+margin: 0 0 12px;
+font-size: 18px;
+}
+.footer-links {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 12px 24px;
+}
+.footer-links a,
+.site-footer > a {
+color: #59620d;
+font-size: 13px;
+text-decoration: none;
+}
+.footer-links a:hover,
+.site-footer > a:hover {
+text-decoration: underline;
+}
+.site-footer p {
+margin: 20px 0 0;
+font-size: 12px;
+}
+/* =========================
+19. TABLET RESPONSIVE
+601px - 900px
+========================= */
+@media (min-width: 601px) and (max-width: 900px) {
+main {
+padding: 28px 5%;
+}
+.preference-grid {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.destination-card {
+grid-template-columns: minmax(150px, 35%) minmax(0, 1fr);
+gap: 14px;
+}
+.destination-image {
+height: 160px;
+}
+.planning-tools {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+}
+/* =========================
+20. MOBILE RESPONSIVE
+Up to 600px
+========================= */
 @media (max-width: 600px) {
-  .choice-grid.seasons {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
+body {
+font-size: 14px;
 }
-
+/* HEADER */
+.site-header {
+min-height: 60px;
+padding: 10px 14px;
+gap: 8px;
+}
+.logo,
+.site-logo {
+font-size: 20px;
+}
+.site-header nav {
+gap: 10px;
+}
+.site-header nav a {
+font-size: 10px;
+}
+/* MAIN */
+main {
+padding: 20px 14px 30px;
+}
+/* INTRO */
+.intro {
+padding: 18px 12px;
+border-radius: 17px;
+}
+.intro h1 {
+font-size: 24px;
+}
+/* QUIZ */
+.choice-grid {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 10px;
+}
+.choice-grid.seasons {
+grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.choice-card {
+font-size: 12px;
+padding-bottom: 10px;
+}
+.photo {
+height: 95px;
+}
+.quiz-page h2 {
+font-size: 17px;
+}
+/* SLIDERS */
+.slider-title {
+align-items: flex-start;
+}
+.slider-title h2 {
+font-size: 15px;
+}
+.slider-title output {
+font-size: 17px;
+}
+/* BUTTONS */
+.page-buttons {
+gap: 8px;
+}
+.next-button,
+.previous-button {
+min-height: 42px;
+padding: 10px 14px;
+font-size: 12px;
+}
+/* PASSPORT */
+.passport-options {
+gap: 8px;
+}
+.pill {
+padding: 9px 11px;
+font-size: 11px;
+}
+/* RESULTS */
+.hero-map {
+aspect-ratio: 16 / 8;
+}
+.preference-grid {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 8px;
+}
+.preference-item {
+padding: 10px;
+}
+.destination-card {
+grid-template-columns: 1fr;
+gap: 12px;
+padding: 11px;
+}
+.destination-image {
+height: 190px;
+}
+.destination-info h2 {
+font-size: 20px;
+}
+.destination-info p {
+font-size: 13px;
+}
+/* PLANNING */
+.planning-tools {
+grid-template-columns: 1fr;
+}
+.planning-guide {
+padding: 17px;
+}
+/* FOOTER */
+.footer-links {
+gap: 12px;
+}
+}
+/* =========================
+21. SMALL MOBILE SCREENS
+Up to 390px
+========================= */
 @media (max-width: 390px) {
-  .choice-grid.seasons {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.site-header {
+padding: 9px 10px;
+}
+.logo {
+font-size: 18px;
+}
+.site-header nav {
+gap: 7px;
+}
+.site-header nav a {
+font-size: 9px;
+}
+main {
+padding: 17px 11px 25px;
+}
+.choice-grid.seasons {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.photo {
+height: 82px;
+}
+.page-buttons button {
+padding: 9px 10px;
+font-size: 11px;
+}
+.preference-grid {
+grid-template-columns: 1fr 1fr;
+}
+}
+/* =========================
+22. LARGE SCREENS
+Above 1200px
+========================= */
+@media (min-width: 1201px) {
+.site-header,
+main,
+.site-footer {
+box-shadow: 0 3px 18px #00000008;
+}
+.destination-card {
+gap: 25px;
+}
+}
+/* =========================
+23. REDUCED MOTION
+========================= */
+@media (prefers-reduced-motion: reduce) {
+*,
+*::before,
+*::after {
+scroll-behavior: auto !important;
+transition-duration: 0.01ms !important;
+animation-duration: 0.01ms !important;
+}
 }
