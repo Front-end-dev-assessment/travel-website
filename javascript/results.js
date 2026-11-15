@@ -1,6 +1,6 @@
 // Result-card controls: show saved destinations and keep them in this browser.
 document.addEventListener("DOMContentLoaded", () => {
-  const STORAGE_KEY = "travel-favourites-destinations";
+  const STORAGE_KEY = "travel-favourites";
   let favourites = [];
   try {
     const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
