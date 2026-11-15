@@ -17,11 +17,12 @@
   <header class="site-header">
     <a class="logo" href="index.html">Trip<span>.</span>com</a>
 
-    <nav aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="quiz.html">Travel quiz</a>
-      <a href="favourites.html">♡ Favourites</a>
-    </nav>
+   <nav aria-label="Main navigation">
+  <a href="index-new.html">Home</a>
+  <a href="quiz.html">Travel quiz</a>
+  <a href="results.html">Travel results</a>
+  <a href="favourites.html">♡ Favourites</a>
+</nav>
   </header>
 
   <main class="results-page">
@@ -34,8 +35,8 @@
         alt="Map of the world showing travel destinations"
       >
 
-      <h1>Your next adventure</h1>
-      <p>Explore destinations based on your travel preferences.</p>
+      <h1>Your travel planning tips</h1>
+      <p>Use these tips to prepare for your trip, then explore destinations that match your preferences.</p>
     </section>
 
     <!-- ANSWERS SELECTED IN THE QUIZ -->
@@ -89,164 +90,7 @@
       <a class="edit-answers" href="quiz.html">← Edit my answers</a>
     </div>
 
-    <!-- DESTINATION RECOMMENDATIONS -->
-    <section class="destination-results" id="destinations">
-      <h2>Recommended destinations</h2>
-
-      <p class="section-description">
-        Discover places that could be perfect for your next trip.
-      </p>
-
-      <article class="destination-card">
-        <img
-          class="destination-image"
-          src="images/lisbon.jpg"
-          alt="Yellow tram in Lisbon, Portugal"
-          loading="lazy"
-        >
-
-        <div class="destination-info">
-          <h2>Lisbon, Portugal</h2>
-          <p>Explore colourful streets, scenic viewpoints and cosy cafés.</p>
-          <p class="destination-interests">
-            <strong>Interests:</strong> Culture · City walks · Food
-          </p>
-          <p class="destination-price">~£420/person</p>
-
-          <button class="save-button" type="button"
-            data-destination="lisbon" aria-pressed="false">
-            ♡ Save
-          </button>
-
-          <a class="view-details" href="lisbon.html">View details →</a>
-        </div>
-      </article>
-
-      <article class="destination-card">
-        <img
-          class="destination-image"
-          src="images/amsterdam.jpg"
-          alt="Canals and traditional buildings in Amsterdam"
-          loading="lazy"
-        >
-
-        <div class="destination-info">
-          <h2>Amsterdam, Netherlands</h2>
-          <p>Discover picturesque canals, famous museums and lively neighbourhoods.</p>
-          <p class="destination-interests">
-            <strong>Interests:</strong> Museums · Cycling · Culture
-          </p>
-          <p class="destination-price">Estimated cost: —</p>
-
-          <button class="save-button" type="button"
-            data-destination="amsterdam" aria-pressed="false">
-            ♡ Save
-          </button>
-
-          <a class="view-details" href="amsterdam.html">View details →</a>
-        </div>
-      </article>
-
-      <article class="destination-card">
-        <img
-          class="destination-image"
-          src="images/menorca.jpg"
-          alt="Beautiful coast in Menorca, Spain"
-          loading="lazy"
-        >
-
-        <div class="destination-info">
-          <h2>Menorca, Spain</h2>
-          <p>Unwind on sandy beaches and explore quiet coves and coastal trails.</p>
-          <p class="destination-interests">
-            <strong>Interests:</strong> Beaches · Nature · Relaxation
-          </p>
-          <p class="destination-price">Estimated cost: —</p>
-
-          <button class="save-button" type="button"
-            data-destination="menorca" aria-pressed="false">
-            ♡ Save
-          </button>
-
-          <a class="view-details" href="menorca.html">View details →</a>
-        </div>
-      </article>
-
-      <article class="destination-card">
-        <img
-          class="destination-image"
-          src="images/copenhagen.jpg"
-          alt="Colourful waterfront buildings in Copenhagen"
-          loading="lazy"
-        >
-
-        <div class="destination-info">
-          <h2>Copenhagen, Denmark</h2>
-          <p>Enjoy colourful harbour views, Danish design and a city made for cycling.</p>
-          <p class="destination-interests">
-            <strong>Interests:</strong> Design · Cycling · City walks
-          </p>
-          <p class="destination-price">Estimated cost: —</p>
-
-          <button class="save-button" type="button"
-            data-destination="copenhagen" aria-pressed="false">
-            ♡ Save
-          </button>
-
-          <a class="view-details" href="copenhagen.html">View details →</a>
-        </div>
-      </article>
-
-      <article class="destination-card">
-        <img
-          class="destination-image"
-          src="images/paris.jpg"
-          alt="Eiffel Tower in Paris, France"
-          loading="lazy"
-        >
-
-        <div class="destination-info">
-          <h2>Paris, France</h2>
-          <p>Explore iconic landmarks, art museums and charming streets lined with cafés.</p>
-          <p class="destination-interests">
-            <strong>Interests:</strong> Art · Culture · Food
-          </p>
-          <p class="destination-price">Estimated cost: —</p>
-
-          <button class="save-button" type="button"
-            data-destination="paris" aria-pressed="false">
-            ♡ Save
-          </button>
-
-          <a class="view-details" href="paris.html">View details →</a>
-        </div>
-      </article>
-
-      <article class="destination-card">
-        <img
-          class="destination-image"
-          src="images/barcelona.jpg"
-          alt="Sagrada Familia in Barcelona, Spain"
-          loading="lazy"
-        >
-
-        <div class="destination-info">
-          <h2>Barcelona, Spain</h2>
-          <p>Combine beach time with striking architecture and lively city streets.</p>
-          <p class="destination-interests">
-            <strong>Interests:</strong> Beaches · Architecture · Food
-          </p>
-          <p class="destination-price">Estimated cost: —</p>
-
-          <button class="save-button" type="button"
-            data-destination="barcelona" aria-pressed="false">
-            ♡ Save
-          </button>
-
-          <a class="view-details" href="barcelona.html">View details →</a>
-        </div>
-      </article>
-    </section>
+    
 
     <!-- PERSONAL TRIP PLANNING TIPS -->
     <section class="planning-guide">
@@ -301,6 +145,12 @@
     <p class="student-tip" id="student-tip" hidden>
       Remember to check current student and seasonal offers before booking.
     </p>
+
+    <div class="results-actions">
+  <a class="next-button" href="results.html">
+    View my destinations →
+  </a>
+</div>
 
   </main>
 
