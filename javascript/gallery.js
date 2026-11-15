@@ -1,5 +1,10 @@
 
 
+
+
+
+
+
 //buttons animation//
 const gallery = document.querySelector(".spain-gallery");
 const photos = gallery.querySelectorAll("img");
