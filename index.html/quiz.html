@@ -13,7 +13,7 @@
   <header class="site-header">
     <a class="logo" href="index-new.html">Trip<span>.</span>com</a>
     <nav>
-      <a href="index.html">Home</a>
+      <a href="index-new.html">Home</a>
       <a href="#quiz">Travel quiz</a>
       <a href="favourites.html">♡ Favourites</a>
     </nav>
@@ -25,6 +25,7 @@
       <p>Answer a few quick questions and we’ll find destinations that fit your budget.</p>
     </section>
 
+    <!-- QUIZ PROGRESS INDICATOR -->
     <div class="progress">
       <strong id="step-label">Step 1 of 3</strong>
       <div class="progress-line">
@@ -32,178 +33,257 @@
       </div>
     </div>
 
-    <!-- PAGE 1 -->
+    <!-- PAGE 1: SEASON, DURATION AND BUDGET -->
     <section class="quiz-page" data-step="0">
+
       <h2>When do you want to travel?</h2>
       <p class="hint">Choose one season.</p>
 
       <div class="choice-grid seasons">
+
         <button class="choice-card" type="button" data-group="season" data-value="Summer">
-          <span class="photo summer"></span><span>Summer</span>
+          <span class="photo summer"></span>
+          <span>Summer</span>
         </button>
+
         <button class="choice-card" type="button" data-group="season" data-value="Autumn">
-          <span class="photo autumn"></span><span>Autumn</span>
+          <span class="photo autumn"></span>
+          <span>Autumn</span>
         </button>
+
         <button class="choice-card" type="button" data-group="season" data-value="Winter">
-          <span class="photo winter"></span><span>Winter</span>
+          <span class="photo winter"></span>
+          <span>Winter</span>
         </button>
+
         <button class="choice-card" type="button" data-group="season" data-value="Spring">
-          <span class="photo spring"></span><span>Spring</span>
+          <span class="photo spring"></span>
+          <span>Spring</span>
         </button>
+
         <button class="choice-card" type="button" data-group="season" data-value="No preference">
           <span class="photo no-preference">✈️</span>
           <span>No preference</span>
         </button>
+
       </div>
 
+      <!-- TRAVEL DURATION SLIDER -->
       <div class="slider-question">
+
         <div class="slider-title">
           <h2>How many days do you want to travel?</h2>
           <output id="days-value">7 days</output>
         </div>
-        <div class="slider-labels"><span>1 day</span><span>14 days</span></div>
+
+        <div class="slider-labels">
+          <span>1 day</span>
+          <span>14 days</span>
+        </div>
+
         <input id="days" type="range" min="1" max="14" value="7">
+
       </div>
 
+      <!-- TRAVEL BUDGET SLIDER -->
       <div class="slider-question">
+
         <div class="slider-title">
-          <h2>What is your budget per person, excluding flights?</h2>
+          <h2>What is your total travel budget?</h2>
           <output id="budget-value">£500</output>
         </div>
-        <div class="slider-labels"><span>£100</span><span>£2,000</span></div>
+
+        <div class="slider-labels">
+          <span>£100</span>
+          <span>£2,000+</span>
+        </div>
+
         <input id="budget" type="range" min="100" max="2000" step="50" value="500">
-        <p class="hint">
-          Your budget should cover accommodation, food and local transport.
-          Flights, travel insurance, visa fees and paid attractions are not included.
-          Costs are approximate.
-        </p>
+
       </div>
 
       <p class="message" aria-live="polite"></p>
+
+      <!-- PAGE NAVIGATION -->
       <div class="page-buttons">
         <span></span>
         <button class="next-button" type="button">Next page →</button>
       </div>
+
     </section>
 
-    <!-- PAGE 2 -->
-    <section class="quiz-page" data-step="1" hidden>
-      <h2>Where will you be travelling from?</h2>
-      <p class="hint">Choose one option.</p>
 
-      <div class="choice-grid">
-        <button class="choice-card" type="button" data-group="origin" data-value="Europe">
-          <span class="photo europe">🇪🇺</span><span>Europe</span>
+    <!-- PAGE 2: PLANNING, HOLIDAY TYPE AND ACCOMMODATION -->
+    <section class="quiz-page" data-step="1" hidden>
+
+      <h2>How much planning would you like to do before your trip?</h2>
+      <p class="hint">Choose the option that sounds most like you.</p>
+
+      <div class="choice-grid planning-choices">
+
+        <button class="choice-card" type="button" data-group="planning" data-value="Everything planned in advance">
+          <span class="photo planning-ahead">🗓️</span>
+          <span>I want everything planned in advance</span>
         </button>
-        <button class="choice-card" type="button" data-group="origin" data-value="United Kingdom">
-          <span class="photo uk">🇬🇧</span><span>United Kingdom</span>
+
+        <button class="choice-card" type="button" data-group="planning" data-value="A few main activities">
+          <span class="photo planning-some">📌</span>
+          <span>I'll plan a few main activities</span>
         </button>
-        <button class="choice-card" type="button" data-group="origin" data-value="Asia">
-          <span class="photo asia">🌏</span><span>Asia</span>
+
+        <button class="choice-card" type="button" data-group="planning" data-value="Decide as I go">
+          <span class="photo planning-flexible">🧭</span>
+          <span>I prefer to decide as I go</span>
         </button>
-        <button class="choice-card" type="button" data-group="origin" data-value="USA">
-          <span class="photo usa">🇺🇸</span><span>USA</span>
+
+        <button class="choice-card" type="button" data-group="planning" data-value="No preference">
+          <span class="photo planning-none">✨</span>
+          <span>No preference</span>
         </button>
-        <button class="choice-card" type="button" data-group="origin" data-value="Other country">
-          <span class="photo other">✈️</span><span>Other country</span>
-        </button>
+
       </div>
 
-      <label class="other-country" id="other-country-wrap" hidden>
-        Enter your country:
-        <input id="other-country" type="text" placeholder="For example, Canada">
-      </label>
-
+      <!-- HOLIDAY INTERESTS: MULTIPLE CHOICES -->
       <h2 class="sub-question">What type of holiday do you prefer?</h2>
       <p class="hint">Select all that apply.</p>
 
       <div class="choice-grid">
+
         <button class="choice-card" type="button" data-group="holiday" data-value="Beach">
-          <span class="photo beach">🏖️</span><span>Beach</span>
+          <span class="photo beach">🏖️</span>
+          <span>Beach</span>
         </button>
+
         <button class="choice-card" type="button" data-group="holiday" data-value="Culture and history">
-          <span class="photo culture">🏛️</span><span>Culture and history</span>
+          <span class="photo culture">🏛️</span>
+          <span>Culture and history</span>
         </button>
+
         <button class="choice-card" type="button" data-group="holiday" data-value="Nature and mountains">
-          <span class="photo nature">🏞️</span><span>Nature and mountains</span>
+          <span class="photo nature">🏞️</span>
+          <span>Nature and mountains</span>
         </button>
+
         <button class="choice-card" type="button" data-group="holiday" data-value="Nightlife">
-          <span class="photo nightlife">🌃</span><span>Nightlife</span>
+          <span class="photo nightlife">🌃</span>
+          <span>Nightlife</span>
         </button>
+
       </div>
 
+      <!-- ACCOMMODATION -->
       <h2 class="sub-question">What type of accommodation would you prefer?</h2>
       <p class="hint">Choose one option.</p>
 
       <div class="choice-grid">
+
         <button class="choice-card" type="button" data-group="stay" data-value="Hotel">
-          <span class="photo hotel">🛏️</span><span>Hotel</span>
+          <span class="photo hotel">🛏️</span>
+          <span>Hotel</span>
         </button>
+
         <button class="choice-card" type="button" data-group="stay" data-value="Budget hotel">
-          <span class="photo budget-hotel">💸</span><span>Budget hotel</span>
+          <span class="photo budget-hotel">💸</span>
+          <span>Budget hotel</span>
         </button>
+
         <button class="choice-card" type="button" data-group="stay" data-value="Apartment">
-          <span class="photo apartment">🏢</span><span>Apartment</span>
+          <span class="photo apartment">🏢</span>
+          <span>Apartment</span>
         </button>
+
         <button class="choice-card" type="button" data-group="stay" data-value="Any affordable option">
-          <span class="photo affordable">💚</span><span>Any affordable option</span>
+          <span class="photo affordable">💚</span>
+          <span>Any affordable option</span>
         </button>
+
       </div>
 
       <p class="message" aria-live="polite"></p>
+
       <div class="page-buttons">
         <button class="previous-button" type="button">← Previous page</button>
         <button class="next-button" type="button">Next page →</button>
       </div>
+
     </section>
 
-    <!-- PAGE 3 -->
+
+    <!-- PAGE 3: TRANSPORT AND TRAVEL DOCUMENTS -->
     <section class="quiz-page" data-step="2" hidden>
+
       <h2>How would you prefer to get around?</h2>
       <p class="hint">Choose one option.</p>
 
       <div class="choice-grid">
+
         <button class="choice-card" type="button" data-group="transport" data-value="Walking">
-          <span class="photo walking">🚶</span><span>Walking</span>
+          <span class="photo walking">🚶</span>
+          <span>Walking</span>
         </button>
+
         <button class="choice-card" type="button" data-group="transport" data-value="Renting a car">
-          <span class="photo driving">🚗</span><span>Renting a car</span>
+          <span class="photo driving">🚗</span>
+          <span>Renting a car</span>
         </button>
+
         <button class="choice-card" type="button" data-group="transport" data-value="Public transport">
-          <span class="photo public">🚋</span><span>Public transport</span>
+          <span class="photo public">🚋</span>
+          <span>Public transport</span>
         </button>
+
         <button class="choice-card" type="button" data-group="transport" data-value="A mix of different options">
-          <span class="photo mixed">🧭</span><span>A mix of options</span>
+          <span class="photo mixed">🧭</span>
+          <span>A mix of options</span>
         </button>
+
       </div>
 
+      <!-- TRAVEL COMPANIONS -->
       <div class="passport-box">
-        <h2>What type of passport or UK immigration status do you have?</h2>
-        <p class="hint">Choose one. This helps us suggest places you may be able to visit.</p>
+        <h2>Who are you travelling with?</h2>
+        <p class="hint">
+          This can affect your accommodation, transport and activity costs.
+        </p>
+
         <div class="passport-options">
-          <button class="pill" type="button" data-group="passport" data-value="British passport">British
-            passport</button>
-          <button class="pill" type="button" data-group="passport" data-value="EU passport">EU passport</button>
-          <button class="pill" type="button" data-group="passport" data-value="Settled or pre-settled status">Settled or
-            pre-settled status</button>
-          <button class="pill" type="button" data-group="passport" data-value="UK visa">UK visa</button>
-          <button class="pill" type="button" data-group="passport" data-value="Other / not sure">Other / not
-            sure</button>
+          <button class="pill" type="button" data-group="companions" data-value="Solo">
+            Solo
+          </button>
+
+          <button class="pill" type="button" data-group="companions" data-value="With a partner">
+            With a partner
+          </button>
+
+          <button class="pill" type="button" data-group="companions" data-value="With family">
+            With family
+          </button>
+
+          <button class="pill" type="button" data-group="companions" data-value="With friends">
+            With friends
+          </button>
+
+          <button class="pill" type="button" data-group="companions" data-value="No preference">
+            No preference
+          </button>
         </div>
       </div>
 
+      <!-- STUDENT DISCOUNT OPTION -->
       <label class="student-option">
         <input id="student-discount" type="checkbox">
-        I’m a student — show student discount tips
+        I'm a student — show student discount tips
       </label>
 
       <p class="message" aria-live="polite"></p>
+
+      <!-- FINAL NAVIGATION -->
       <div class="page-buttons">
         <button class="previous-button" type="button">← Previous page</button>
         <button class="next-button results-button" type="button">Show my results →</button>
       </div>
-    </section>
 
+    </section>
   </main>
 </body>
 

@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your results and travel tips | Trip.com</title>
+
+  <link rel="stylesheet" href="../style.css/quiz.css">
+  <script src="../javascript/tips.js" defer></script>
+  <script src="../javascript/results.js" defer></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <a class="logo" href="index-new.html">Trip<span>.</span>com</a>
+
+   <nav aria-label="Main navigation">
+  <a href="index-new.html">Home</a>
+  <a href="quiz.html">Travel quiz</a>
+  <a href="results.html">Travel results</a>
+  <a href="favourites.html">♡ Favourites</a>
+</nav>
+  </header>
+
+  <main class="results-page">
+
+    <!-- PAGE INTRODUCTION -->
+    <section class="results-hero">
+      <img
+        class="hero-map"
+        src="../images folder/map.jpg"
+        alt="Map of the world showing travel destinations"
+      >
+
+      <h1>Your travel planning tips</h1>
+      <p>Use these tips to prepare for your trip, then explore destinations that match your preferences.</p>
+    </section>
+
+    <!-- ANSWERS SELECTED IN THE QUIZ -->
+    <section class="trip-preferences">
+      <h2>Your travel preferences</h2>
+
+      <div class="preference-grid">
+        <div class="preference-item">
+          <strong>Season</strong>
+          <span id="trip-season">—</span>
+        </div>
+
+        <div class="preference-item">
+          <strong>Budget</strong>
+          <span id="trip-budget">—</span>
+        </div>
+
+        <div class="preference-item">
+          <strong>Duration</strong>
+          <span id="trip-duration">—</span>
+        </div>
+
+        <div class="preference-item">
+          <strong>Interests</strong>
+          <span id="trip-interests">—</span>
+        </div>
+
+        <div class="preference-item">
+          <strong>Planning style</strong>
+          <span id="trip-planning">—</span>
+        </div>
+
+        <div class="preference-item">
+          <strong>Accommodation</strong>
+          <span id="trip-stay">—</span>
+        </div>
+
+        <div class="preference-item">
+          <strong>Transport</strong>
+          <span id="trip-transport">—</span>
+        </div>
+
+        <div class="preference-item">
+          <strong>Travelling with</strong>
+          <span id="trip-companions">—</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="results-actions">
+      <a class="edit-answers" href="quiz.html">← Edit my answers</a>
+    </div>
+
+    
+
+    <!-- PERSONAL TRIP PLANNING TIPS -->
+    <section class="planning-guide">
+      <h2>Your trip planning guide</h2>
+
+      <p id="planning-intro">
+        Start planning your next adventure with these helpful steps.
+      </p>
+
+      <ol id="planning-checklist">
+        <li>Choose your destination.</li>
+        <li>Compare flights and accommodation.</li>
+        <li>Plan your activities.</li>
+        <li>Check your travel documents.</li>
+      </ol>
+
+      <h3>Helpful planning and booking sites</h3>
+
+      <div class="planning-tools">
+        <a class="planning-tool"
+          href="https://wanderlog.info/"
+          target="_blank"
+          rel="noopener noreferrer">
+          <strong>Wanderlog</strong>
+          <span>Build an itinerary, save places and organise your days.</span>
+        </a>
+
+        <a class="planning-tool"
+          href="https://www.booking.com/"
+          target="_blank"
+          rel="noopener noreferrer">
+          <strong>Booking.com</strong>
+          <span>Compare accommodation and booking conditions.</span>
+        </a>
+
+        <a class="planning-tool"
+          href="https://www.getyourguide.com/"
+          target="_blank"
+          rel="noopener noreferrer">
+          <strong>GetYourGuide</strong>
+          <span>Browse tours, attractions and activities.</span>
+        </a>
+      </div>
+
+      <p class="planning-note">
+        Before booking, compare prices and cancellation terms, and check
+        attraction details on official websites.
+      </p>
+    </section>
+
+    <!-- STUDENT DISCOUNT MESSAGE -->
+    <p class="student-tip" id="student-tip" hidden>
+      Remember to check current student and seasonal offers before booking.
+    </p>
+
+    <div class="results-actions">
+  <a class="next-button" href="results.html">
+    View my destinations →
+  </a>
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-shortcuts">
+      <h2>Shortcuts</h2>
+
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="index-new.html#destinations">Look around the world</a>
+        <a href="index-new.html">Home</a>
+        <a href="index-new.html#experiences">Previous experiences</a>
+        <a href="index-new.html#tips">Tips</a>
+      </nav>
+    </div>
+
+    <p>© 2026 Trip.com. Find your next adventure.</p>
+  </footer>
+</body>
+</html>
