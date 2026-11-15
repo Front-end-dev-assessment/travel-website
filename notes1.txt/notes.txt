@@ -40,3 +40,9 @@ miro board link
 voice and screen recording link
 
     
+
+Link to a homepage of the site (fully done by me, as well as most of all links across the pages)
+
+    http://127.0.0.1:5500/index.html/index-new.html
+
+    p.c. port have been changet from 8080 to the main one 443 to run smoother and open directry in the currently used browser (Chrome primarily) and not on separate window
