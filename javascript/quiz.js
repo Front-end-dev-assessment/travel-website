@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     holiday: [],
     stay: "",
     transport: "",
-    passport: ""
+    companions: ""
   };
   let currentPage = 0;
 
@@ -105,8 +105,8 @@ document.addEventListener("DOMContentLoaded", () => {
         showError("Please choose your preferred transport.");
         return false;
       }
-      if (!answers.passport) {
-        showError("Please choose your passport or immigration status.");
+      if (!answers.companions) {
+        showError("Please choose who you are travelling with.");
         return false;
       }
     }
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(savedAnswers));
-      window.location.href = "results.html";
+      window.location.href = "tips.html";
     } catch {
       showError("Unable to save your answers. Please check browser storage.");
     }
@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (!saved || typeof saved !== "object") return;
 
-    ["season", "planning", "stay", "transport", "passport"].forEach(group => {
+    ["season", "planning", "stay", "transport", "companions"].forEach(group => {
       if (typeof saved[group] !== "string") return;
       const button = [...document.querySelectorAll(`[data-group="${group}"]`)]
         .find(option => option.dataset.value === saved[group]);

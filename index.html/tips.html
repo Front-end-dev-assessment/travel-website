@@ -1,0 +1,323 @@
+Так. Скопіюй цей код у файл **`tips.html`** у корені проєкту — поруч із `quiz.html`. Він підключає окремі `javascript/tips.js` і `javascript/results.js`, а також спільний CSS. У `quiz.js` перехід після завершення квізу має вести на `tips.html`.
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your results and travel tips | Trip.com</title>
+
+  <link rel="stylesheet" href="styles/quiz.css">
+  <script src="javascript/tips.js" defer></script>
+  <script src="javascript/results.js" defer></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <a class="logo" href="index.html">Trip<span>.</span>com</a>
+
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="quiz.html">Travel quiz</a>
+      <a href="favourites.html">♡ Favourites</a>
+    </nav>
+  </header>
+
+  <main class="results-page">
+
+    <!-- PAGE INTRODUCTION -->
+    <section class="results-hero">
+      <img
+        class="hero-map"
+        src="images/map.jpg"
+        alt="Map of the world showing travel destinations"
+      >
+
+      <h1>Your next adventure</h1>
+      <p>Explore destinations based on your travel preferences.</p>
+    </section>
+
+    <!-- ANSWERS SELECTED IN THE QUIZ -->
+    <section class="trip-preferences">
+      <h2>Your travel preferences</h2>
+
+      <div class="preference-grid">
+        <div class="preference-item">
+          <strong>Season</strong>
+          <span id="trip-season">—</span>
+        </div>
+
+        <div class="preference-item">
+          <strong>Budget</strong>
+          <span id="trip-budget">—</span>
+        </div>
+
+        <div class="preference-item">
+          <strong>Duration</strong>
+          <span id="trip-duration">—</span>
+        </div>
+
+        <div class="preference-item">
+          <strong>Interests</strong>
+          <span id="trip-interests">—</span>
+        </div>
+
+        <div class="preference-item">
+          <strong>Planning style</strong>
+          <span id="trip-planning">—</span>
+        </div>
+
+        <div class="preference-item">
+          <strong>Accommodation</strong>
+          <span id="trip-stay">—</span>
+        </div>
+
+        <div class="preference-item">
+          <strong>Transport</strong>
+          <span id="trip-transport">—</span>
+        </div>
+
+        <div class="preference-item">
+          <strong>Travelling with</strong>
+          <span id="trip-companions">—</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="results-actions">
+      <a class="edit-answers" href="quiz.html">← Edit my answers</a>
+    </div>
+
+    <!-- DESTINATION RECOMMENDATIONS -->
+    <section class="destination-results" id="destinations">
+      <h2>Recommended destinations</h2>
+
+      <p class="section-description">
+        Discover places that could be perfect for your next trip.
+      </p>
+
+      <article class="destination-card">
+        <img
+          class="destination-image"
+          src="images/lisbon.jpg"
+          alt="Yellow tram in Lisbon, Portugal"
+          loading="lazy"
+        >
+
+        <div class="destination-info">
+          <h2>Lisbon, Portugal</h2>
+          <p>Explore colourful streets, scenic viewpoints and cosy cafés.</p>
+          <p class="destination-interests">
+            <strong>Interests:</strong> Culture · City walks · Food
+          </p>
+          <p class="destination-price">~£420/person</p>
+
+          <button class="save-button" type="button"
+            data-destination="lisbon" aria-pressed="false">
+            ♡ Save
+          </button>
+
+          <a class="view-details" href="lisbon.html">View details →</a>
+        </div>
+      </article>
+
+      <article class="destination-card">
+        <img
+          class="destination-image"
+          src="images/amsterdam.jpg"
+          alt="Canals and traditional buildings in Amsterdam"
+          loading="lazy"
+        >
+
+        <div class="destination-info">
+          <h2>Amsterdam, Netherlands</h2>
+          <p>Discover picturesque canals, famous museums and lively neighbourhoods.</p>
+          <p class="destination-interests">
+            <strong>Interests:</strong> Museums · Cycling · Culture
+          </p>
+          <p class="destination-price">Estimated cost: —</p>
+
+          <button class="save-button" type="button"
+            data-destination="amsterdam" aria-pressed="false">
+            ♡ Save
+          </button>
+
+          <a class="view-details" href="amsterdam.html">View details →</a>
+        </div>
+      </article>
+
+      <article class="destination-card">
+        <img
+          class="destination-image"
+          src="images/menorca.jpg"
+          alt="Beautiful coast in Menorca, Spain"
+          loading="lazy"
+        >
+
+        <div class="destination-info">
+          <h2>Menorca, Spain</h2>
+          <p>Unwind on sandy beaches and explore quiet coves and coastal trails.</p>
+          <p class="destination-interests">
+            <strong>Interests:</strong> Beaches · Nature · Relaxation
+          </p>
+          <p class="destination-price">Estimated cost: —</p>
+
+          <button class="save-button" type="button"
+            data-destination="menorca" aria-pressed="false">
+            ♡ Save
+          </button>
+
+          <a class="view-details" href="menorca.html">View details →</a>
+        </div>
+      </article>
+
+      <article class="destination-card">
+        <img
+          class="destination-image"
+          src="images/copenhagen.jpg"
+          alt="Colourful waterfront buildings in Copenhagen"
+          loading="lazy"
+        >
+
+        <div class="destination-info">
+          <h2>Copenhagen, Denmark</h2>
+          <p>Enjoy colourful harbour views, Danish design and a city made for cycling.</p>
+          <p class="destination-interests">
+            <strong>Interests:</strong> Design · Cycling · City walks
+          </p>
+          <p class="destination-price">Estimated cost: —</p>
+
+          <button class="save-button" type="button"
+            data-destination="copenhagen" aria-pressed="false">
+            ♡ Save
+          </button>
+
+          <a class="view-details" href="copenhagen.html">View details →</a>
+        </div>
+      </article>
+
+      <article class="destination-card">
+        <img
+          class="destination-image"
+          src="images/paris.jpg"
+          alt="Eiffel Tower in Paris, France"
+          loading="lazy"
+        >
+
+        <div class="destination-info">
+          <h2>Paris, France</h2>
+          <p>Explore iconic landmarks, art museums and charming streets lined with cafés.</p>
+          <p class="destination-interests">
+            <strong>Interests:</strong> Art · Culture · Food
+          </p>
+          <p class="destination-price">Estimated cost: —</p>
+
+          <button class="save-button" type="button"
+            data-destination="paris" aria-pressed="false">
+            ♡ Save
+          </button>
+
+          <a class="view-details" href="paris.html">View details →</a>
+        </div>
+      </article>
+
+      <article class="destination-card">
+        <img
+          class="destination-image"
+          src="images/barcelona.jpg"
+          alt="Sagrada Familia in Barcelona, Spain"
+          loading="lazy"
+        >
+
+        <div class="destination-info">
+          <h2>Barcelona, Spain</h2>
+          <p>Combine beach time with striking architecture and lively city streets.</p>
+          <p class="destination-interests">
+            <strong>Interests:</strong> Beaches · Architecture · Food
+          </p>
+          <p class="destination-price">Estimated cost: —</p>
+
+          <button class="save-button" type="button"
+            data-destination="barcelona" aria-pressed="false">
+            ♡ Save
+          </button>
+
+          <a class="view-details" href="barcelona.html">View details →</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- PERSONAL TRIP PLANNING TIPS -->
+    <section class="planning-guide">
+      <h2>Your trip planning guide</h2>
+
+      <p id="planning-intro">
+        Start planning your next adventure with these helpful steps.
+      </p>
+
+      <ol id="planning-checklist">
+        <li>Choose your destination.</li>
+        <li>Compare flights and accommodation.</li>
+        <li>Plan your activities.</li>
+        <li>Check your travel documents.</li>
+      </ol>
+
+      <h3>Helpful planning and booking sites</h3>
+
+      <div class="planning-tools">
+        <a class="planning-tool"
+          href="https://wanderlog.info/"
+          target="_blank"
+          rel="noopener noreferrer">
+          <strong>Wanderlog</strong>
+          <span>Build an itinerary, save places and organise your days.</span>
+        </a>
+
+        <a class="planning-tool"
+          href="https://www.booking.com/"
+          target="_blank"
+          rel="noopener noreferrer">
+          <strong>Booking.com</strong>
+          <span>Compare accommodation and booking conditions.</span>
+        </a>
+
+        <a class="planning-tool"
+          href="https://www.getyourguide.com/"
+          target="_blank"
+          rel="noopener noreferrer">
+          <strong>GetYourGuide</strong>
+          <span>Browse tours, attractions and activities.</span>
+        </a>
+      </div>
+
+      <p class="planning-note">
+        Before booking, compare prices and cancellation terms, and check
+        attraction details on official websites.
+      </p>
+    </section>
+
+    <!-- STUDENT DISCOUNT MESSAGE -->
+    <p class="student-tip" id="student-tip" hidden>
+      Remember to check current student and seasonal offers before booking.
+    </p>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-shortcuts">
+      <h2>Shortcuts</h2>
+
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="index.html#destinations">Look around the world</a>
+        <a href="index.html">Home</a>
+        <a href="index.html#experiences">Previous experiences</a>
+        <a href="index.html#tips">Tips</a>
+      </nav>
+    </div>
+
+    <p>© 2026 Trip.com. Find your next adventure.</p>
+  </footer>
+</body>
+</html>
+```
